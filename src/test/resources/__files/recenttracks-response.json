@@ -1,0 +1,16 @@
+{
+  "recenttracks": {
+    "track": [
+      {
+        "artist": { "#text": "Artist1" },
+        "name": "Track1",
+        "date": { "uts": "1692566400" }
+      },
+      {
+        "artist": { "#text": "Artist2" },
+        "name": "Track2",
+        "date": { "uts": "1692652800" }
+      }
+    ]
+  }
+}

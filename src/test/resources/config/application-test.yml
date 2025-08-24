@@ -1,0 +1,4 @@
+lastfm:
+  baseurl: http://localhost:8089
+  user: testUser
+  apiKey: testApiKey

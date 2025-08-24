@@ -1,0 +1,14 @@
+# trigger update against Last.fm service
+POST http://localhost:8080/ingest/lastfm
+Content-Type: application/json
+
+{
+  "name": "New Item",
+  "price": 25.0
+}
+
+###
+
+# get top artists in a given period
+GET http://localhost:8080/stats/top-artists?from=2025-01-01&to=2025-12-31
+Accept: application/json
