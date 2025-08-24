@@ -1,5 +1,6 @@
 package com.sergiorebelo.songz.service;
 
+import com.github.database.rider.core.api.dataset.DataSet;
 import com.sergiorebelo.songz.source.lastfm.LastfmConfig;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -54,6 +55,7 @@ public class IngestServiceTest {
         );
     }
 
+    @DataSet(cleanBefore = true, cleanAfter = true)
     @Test
     public void testLastfmIngest() {
         Instant since = Instant.now().minusSeconds(60 * 60 * 24 * 365); // Adjust as needed for your test

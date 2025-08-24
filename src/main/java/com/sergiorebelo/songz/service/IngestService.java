@@ -9,6 +9,7 @@ import com.sergiorebelo.songz.domain.Track;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.logging.Logger;
 
 @Service
 public class IngestService {
@@ -18,6 +19,8 @@ public class IngestService {
     //SERVICES
     private final PlayService playService;
     private final TrackService trackService;
+    private final Logger log = Logger.getLogger(IngestService.class.getName());
+
 
     public IngestService(LastfmClient lastfmClient, PlayService playService, TrackService trackService) {
         this.lastfmClient = lastfmClient; this.playService = playService; this.trackService = trackService;
@@ -26,7 +29,6 @@ public class IngestService {
     public int lastfmIngest(Instant since) {
         Long fromEpoch = since != null ? since.getEpochSecond() : null;
         RecentTracksResponse resp = lastfmClient.getRecentTracks(fromEpoch);
-
         return processTracksResponse(resp);
     }
 
@@ -44,7 +46,7 @@ public class IngestService {
         if (played == null) return false;
         Track track = trackService.findByTitleAndArtist(trackItem.title(), trackItem.artistName())
                 .orElseGet(() -> trackService.createNewTrack(trackItem.artistName(), trackItem.title()));
-        if (!playService.existsByTrackAndPlayedAt(track, played))  return false;
+        if (playService.existsByTrackAndPlayedAt(track, played))  return false;
         playService.recordPlay(track, played, LASTFM);
         return true;
     }
