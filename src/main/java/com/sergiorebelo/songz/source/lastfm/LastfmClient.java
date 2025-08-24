@@ -15,7 +15,7 @@ public class LastfmClient {
 
   public LastfmClient(LastfmConfig cfg, RestClient.Builder builder) {
     this.config = cfg;
-    this.restClient = builder.baseUrl(cfg.baseUrl()).build();
+    this.restClient = builder.baseUrl(cfg.baseurl()).build();
   }
 
   @Transactional(propagation = Propagation.NOT_SUPPORTED)
@@ -24,7 +24,7 @@ public class LastfmClient {
             .uri(uri -> uri
                     .queryParam("method", "user.getrecenttracks")
                     .queryParam("user", config.user())
-                    .queryParam("api_key", config.apiKey())
+                    .queryParam("api_key", config.apikey())
                     .queryParam("format", "json")
                     .queryParamIfPresent("from", Optional.ofNullable(sinceEpoch))
                     .build())

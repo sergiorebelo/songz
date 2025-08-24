@@ -44,7 +44,7 @@ public class IngestServiceTest {
         stubFor(get(urlPathEqualTo("/"))
                 .withQueryParam("method", equalTo("user.getrecenttracks"))
                 .withQueryParam("user", equalTo(config.user()))
-                .withQueryParam("api_key", equalTo(config.apiKey()))
+                .withQueryParam("api_key", equalTo(config.apikey()))
                 .withQueryParam("format", equalTo("json"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)

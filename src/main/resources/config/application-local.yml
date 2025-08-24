@@ -1,4 +1,4 @@
 lastfm:
-  baseUrl: https://ws.audioscrobbler.com/2.0
-  apiKey: your_api_key_here
+  baseurl: https://ws.audioscrobbler.com/2.0
+  apikey: your_api_key_here
   user: your_username_here

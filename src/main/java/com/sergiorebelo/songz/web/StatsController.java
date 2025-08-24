@@ -13,7 +13,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/stats")
 public class StatsController {
-    @PersistenceContext EntityManager em;
 
     private final PlayService playService;
 
@@ -24,8 +23,6 @@ public class StatsController {
     public Map<String, Integer> topArtistsWithPlayCount(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
-        Instant f = from.atStartOfDay(ZoneOffset.UTC).toInstant();
-        Instant t = to.plusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant();
         return playService.getTopArtistsWithPlayCount(from, to);
     }
 }
