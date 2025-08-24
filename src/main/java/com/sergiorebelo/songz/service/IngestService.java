@@ -27,10 +27,6 @@ public class IngestService {
     public int lastfmIngest(Instant since) {
         Long fromEpoch = since != null ? since.getEpochSecond() : null;
         RecentTracksResponse resp = lastfmClient.getRecentTracks(fromEpoch);
-        System.out.println(">> Ingesting tracks from Last.fm since: " + (fromEpoch != null ? fromEpoch : "latest"));
-        System.out.println(">> Found " + resp.recenttracks().track().size() + " tracks to process");
-        System.out.println(">> Here are the tracks: " + resp.recenttracks());
-        System.out.println(">> Processing tracks...");
 
         int inserted = 0;
         for (TrackItem trackItem : resp.recenttracks().track()) {

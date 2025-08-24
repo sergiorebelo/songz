@@ -13,7 +13,6 @@ public class IngestionSchedules {
     @Scheduled(cron = "0 24 3 * * ?") // Everyday 3:24 am
     public void scheduleLastfmIngestion() {
         int inserted = ingestService.lastfmIngest(null);
-        System.out.println("Last.fm ingestion completed, inserted " + inserted + " records.");
     }
 
 

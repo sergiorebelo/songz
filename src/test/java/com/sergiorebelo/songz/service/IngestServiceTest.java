@@ -59,7 +59,6 @@ public class IngestServiceTest {
         Instant since = Instant.now().minusSeconds(60 * 60 * 24 * 365); // Adjust as needed for your test
 
         int insertedCount = ingestService.lastfmIngest(since);
-        System.out.println(">> Inserted tracks: " + insertedCount);
 
         Assertions.assertTrue(insertedCount > 0, "Should ingest some tracks: "  + insertedCount);
     }

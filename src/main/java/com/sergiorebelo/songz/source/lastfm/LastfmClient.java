@@ -20,7 +20,6 @@ public class LastfmClient {
 
   @Transactional(propagation = Propagation.NOT_SUPPORTED)
   public RecentTracksResponse getRecentTracks(Long sinceEpoch) {
-    System.out.println(">> Fetching recent tracks from Last.fm since: " + (sinceEpoch != null ? sinceEpoch : "latest"));
     return restClient.get()
             .uri(uri -> uri
                     .queryParam("method", "user.getrecenttracks")
