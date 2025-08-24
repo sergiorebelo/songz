@@ -2,10 +2,12 @@ package com.sergiorebelo.songz.scheds;
 
 import com.sergiorebelo.songz.service.IngestService;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
+@Component
 public class IngestionSchedules {
 
-    IngestService ingestService;
+    private final IngestService ingestService;
 
     public IngestionSchedules(IngestService ingestService) {
         this.ingestService = ingestService;
@@ -14,6 +16,4 @@ public class IngestionSchedules {
     public void scheduleLastfmIngestion() {
         int inserted = ingestService.lastfmIngest(null);
     }
-
-
 }
